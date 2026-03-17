@@ -9,6 +9,8 @@ export interface BubbleInf {
     image: string;
 }
 
+
+
 // interface BubbleContext {
 //     currentBubble: BubbleInf | null;
 //     setBubbles: (song: BubbleInf) => void;
