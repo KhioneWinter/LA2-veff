@@ -1,6 +1,4 @@
 
-import { createContext, useContext, useState} from 'react';
-
 export interface BubbleInf {
     id: number;
     name: string;
@@ -9,6 +7,11 @@ export interface BubbleInf {
     image: string;
 }
 
+export interface BundlesInf {
+    id: number;
+    name: string;
+    items: number[];
+}
 
 
 // interface BubbleContext {

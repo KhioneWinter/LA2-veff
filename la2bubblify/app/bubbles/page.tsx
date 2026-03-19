@@ -23,15 +23,16 @@ export default async function BubblesPage() {
       {bubbles.map((bubble) => (
         <Link key={bubble.id} href={`/bubbles/${bubble.id}`}
           className="bg-blue-300 h-70 rounded-sm">
-          <div>
+          <div className="px-5">
             <Image 
               src={bubble.image}
               alt={bubble.name}
               width={200}
               height={200}
             />
-            <h2 className="px-5 ">{bubble.name}</h2>
-            <p className="px-5 ">{bubble.price}</p>
+            <h2>{bubble.name}</h2>
+            <p className="pb-3">{bubble.price}</p>
+            <button className="bg-amber-100 rounded-xl h-10 w-30">Add to cart!</button>
           </div>
         </Link>
         ))}

@@ -4,7 +4,7 @@ const URL = "http://localhost:3500";
 export default async function AboutBubble() {
   return (
     <div className="p-2">
-        <h1 className="font-bold">THIS IS CART</h1>
+        <h1 className="font-bold">Your cart</h1>
     </div>
   );
 }

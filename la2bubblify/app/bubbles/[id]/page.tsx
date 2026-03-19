@@ -16,7 +16,7 @@ export default async function AboutBubble({params}: {params: Promise<{id: string
     const currBubble = await res.json();
 
     return (
-        <div className="p-4 bg-blue-200 h-134">
+        <div className="p-4 bg-blue-200 h-145">
             <Image 
                 src={currBubble.image}
                 alt={currBubble.name}

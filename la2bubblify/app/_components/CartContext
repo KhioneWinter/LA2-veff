@@ -1,0 +1,16 @@
+'use client'
+
+import {useState, useEffect, createContext, useContext} from "react";
+
+export interface CartItem{
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    quantity: number;
+}
+
+export interface CartContextType {
+    cart: CartItem[];
+    
+}
