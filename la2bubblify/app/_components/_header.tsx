@@ -10,7 +10,7 @@ export default function Header() {
         <Link href={`/bundles`} className="text-white">Bundles</Link>
         <Link href={`/about`} className="text-white">About Us</Link>
         <Link href={`/cart`} className="text-white">Cart</Link>
-        <Link href={`/orders`} className="text-white">Orders</Link>
+        {/* <Link href={`/orders`} className="text-white">Orders</Link> */}
         </nav>
     </aside>
   );

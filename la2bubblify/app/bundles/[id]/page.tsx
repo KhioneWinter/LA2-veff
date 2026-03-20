@@ -7,6 +7,7 @@ const URL = "http://localhost:3500";
 import Image from "next/image";
 //import Link from "next/link";
 
+import AddToCartButton from "../../_components/AddToCartButton";
 
 export default async function AboutBubble({params}: {params: Promise<{id: string}>}) {
     const {id} = await params;
@@ -42,7 +43,16 @@ export default async function AboutBubble({params}: {params: Promise<{id: string
                 
             })}
             </div>
-            <button className="bg-amber-100 rounded-xl h-10 w-30">Add to cart!</button>
+            <AddToCartButton item={{
+                id: currBundle.id,
+                name: currBundle.name,
+                price: currBundle.items.reduce((total: number, itemId: number) => {
+                    const bubble = bubbles.find((b) => b.id === itemId);
+                    return total + (bubble?.price ?? 0);
+                }, 0),
+                image: bubbles.find((b) => b.id === currBundle.items[0])?.image ?? "",
+                quantity: 1
+            }} />
         </div>
     );
 }

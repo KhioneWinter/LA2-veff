@@ -6,6 +6,8 @@ import {BubbleInf} from "../_components/BubbleContext";
 import Image from "next/image";
 import Link from "next/link";
 
+import AddToCartButton from "../_components/AddToCartButton";
+
 const URL = "http://localhost:3500";
 
 export default async function BubblesPage() {
@@ -21,9 +23,9 @@ export default async function BubblesPage() {
   return (
     <div className="grid grid-cols-3 gap-4 p-3">
       {bubbles.map((bubble) => (
-        <Link key={bubble.id} href={`/bubbles/${bubble.id}`}
+          <div className="px-5 bg-blue-300 h-70 rounded-sm">
+            <Link key={bubble.id} href={`/bubbles/${bubble.id}`}
           className="bg-blue-300 h-70 rounded-sm">
-          <div className="px-5">
             <Image 
               src={bubble.image}
               alt={bubble.name}
@@ -32,9 +34,15 @@ export default async function BubblesPage() {
             />
             <h2>{bubble.name}</h2>
             <p className="pb-3">{bubble.price}</p>
-            <button className="bg-amber-100 rounded-xl h-10 w-30">Add to cart!</button>
+            </Link>
+            <AddToCartButton item={{
+                id: bubble.id,
+                name: bubble.name,
+                price: bubble.price,
+                image: bubble.image,
+                quantity: 1
+            }}  />
           </div>
-        </Link>
         ))}
     </div>
   );

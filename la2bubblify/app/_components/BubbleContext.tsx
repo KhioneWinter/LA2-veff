@@ -16,6 +16,6 @@ export interface BundlesInf {
 
 // interface BubbleContext {
 //     currentBubble: BubbleInf | null;
-//     setBubbles: (song: BubbleInf) => void;
+//     setBubbles: (bubble: BubbleInf) => void;
 // }
 

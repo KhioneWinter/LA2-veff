@@ -6,6 +6,8 @@ const URL = "http://localhost:3500";
 import Link from "next/link";
 import Image from "next/image";
 
+import AddToCartButton from "../_components/AddToCartButton";
+
 export default async function AboutBubble() {
   let bundles: BundlesInf[] = [];
 
@@ -24,7 +26,7 @@ export default async function AboutBubble() {
       {bundles.map((bundle) => (
         <Link key={bundle.id} href={`/bundles/${bundle.id}`}>
         <div key={bundle.id} className="bg-blue-300 p-2 pl-6 ">
-          {bundle.items.map((itemId) => {
+          {bundle.items.map((itemId: number) => {
             const bubble = bubbles.find((b) => b.id === itemId);
             if (!bubble) return null;
             return (
@@ -37,7 +39,16 @@ export default async function AboutBubble() {
               </div>
             )
           })}
-          <button className="bg-amber-100 rounded-xl h-10 w-30">Add to cart!</button>
+          <AddToCartButton item={{
+              id: bundle.id,
+              name: bundle.name,
+              price: bundle.items.reduce((total: number, itemId: number) => {
+                const bubble = bubbles.find((b) => b.id === itemId);
+                return total + (bubble?.price ?? 0);
+              }, 0),
+              image: bubbles.find((b) => b.id === bundle.items[0])?.image ?? "",
+              quantity: 1
+          }} />
         </div>
         </Link>
         ))}
