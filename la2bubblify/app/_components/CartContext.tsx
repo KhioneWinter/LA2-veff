@@ -16,6 +16,7 @@ export interface CartContextType {
     removeFromCart: (id: number) => void;
     updateQuantity: (id: number, quantity: number) => void;
     clearCart: () => void;
+    addMultipleToCart: (items: CartItem[]) => void;
 }
 
 export function useCart() {
@@ -49,6 +50,10 @@ export function CartProvider({children}: {children: React.ReactNode}) {
         setCart((prev) => prev.map((i) => i.id === id ? {...i, quantity}: i) ); // fiinds and updates
     }
 
+    function addMultipleToCart(items: CartItem[]) {
+        items.forEach(item => addToCart(item));
+    }
+
     function clearCart() {
         setCart([]);
     }
@@ -64,7 +69,7 @@ export function CartProvider({children}: {children: React.ReactNode}) {
 
     
     return (
-        <CartContext.Provider value={{cart, addToCart, removeFromCart, updateQuantity, clearCart}}>
+        <CartContext.Provider value={{cart, addToCart, removeFromCart, updateQuantity, clearCart, addMultipleToCart}}>
             {children}
         </CartContext.Provider>
     );

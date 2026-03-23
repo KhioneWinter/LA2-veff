@@ -13,9 +13,15 @@ export default function currentOrder() {
     const {checkout} = useCheckout();
     
     async function Conformation() {
+        const phone = checkout.phoneNum.trim();
+        if (!/^\d{7}$/.test(phone)) {
+            alert("Phone number must be 7 digits long");
+            return;
+        }
+
         await submitOrder(
             { items: cart.map((i) => ({ id: i.id, quantity: i.quantity })) },
-            checkout.phoneNum.toString()
+            phone
         );
         router.push("/checkout/success");
     }

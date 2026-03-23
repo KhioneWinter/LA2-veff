@@ -23,7 +23,7 @@ export default async function BubblesPage() {
   return (
     <div className="grid grid-cols-3 gap-4 p-3">
       {bubbles.map((bubble) => (
-          <div className="px-5 bg-blue-300 h-70 rounded-sm">
+          <div key={bubble.id} className="px-5 bg-blue-300 h-70 rounded-sm">
             <Link key={bubble.id} href={`/bubbles/${bubble.id}`}
           className="bg-blue-300 h-70 rounded-sm">
             <Image 

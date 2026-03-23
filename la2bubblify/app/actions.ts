@@ -1,14 +1,17 @@
 'use server'
 
-export async function submitOrder(orderData: any, telephone: string) {
-  const res = await fetch(`http://localhost:3500/orders/${telephone}`, {
+export async function submitOrder(orderData: any, phonenumber: string) {
+  console.log("Calling URL:", `http://localhost:3500/api/orders/${phonenumber}`);
+  console.log("Sending body:", JSON.stringify(orderData));
+  
+  const res = await fetch(`http://localhost:3500/api/orders/${phonenumber}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(orderData),
   });
 
-  // Add this to see what the API returns
   const text = await res.text();
+  console.log("Status:", res.status);
   console.log("API response:", text);
 
   if (!res.ok) throw new Error("Order submit failed, please try again");

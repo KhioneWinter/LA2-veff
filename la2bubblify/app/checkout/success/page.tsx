@@ -11,7 +11,7 @@ export default function currentOrder() {
     const {clearCart} = useCart();
 
     async function ConformationHome() {
-        router.push("/checkout/success");
+        router.push("/");
     }
 
     useEffect(() => {
@@ -21,8 +21,8 @@ export default function currentOrder() {
     return (
         <div className="p-2">
             <h1 className="font-bold">Successful order confirmation! 🎊</h1>
-            <p>We will let you know when your bubbles are on their way!</p>
-            <button onClick={ConformationHome} className="bg-blue-400">Back to homepage</button>
+            <p className="pb-5">We will let you know when your bubbles are on their way!</p>
+            <button onClick={ConformationHome} className="bg-blue-400 p-2">Back to homepage</button>
         </div>
     );
 }
