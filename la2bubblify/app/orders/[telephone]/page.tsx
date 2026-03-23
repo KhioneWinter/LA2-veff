@@ -1,9 +1,10 @@
 const URL = "http://localhost:3500";
 import {AddOrderToCartButton} from "../../_components/AddToCartButton"
 
-export default async function PrevOrdersPAge({params}: {params: Promise<{id:string}>}) {
-  const {id} = await params;
-  const ordsersRes = await fetch(`${URL}/api/orders/${id}`);
+export default async function PrevOrdersPAge({params}: {params: Promise<{telephone:string}>}) {
+  // Shows all the previous orders made from the chosen phone number, and can be added to cart
+  const {telephone} = await params;
+  const ordsersRes = await fetch(`${URL}/api/orders/${telephone}`);
   const bubblesRes = await fetch(`${URL}/api/bubbles`);
 
   if (!ordsersRes.ok) {
@@ -31,6 +32,7 @@ export default async function PrevOrdersPAge({params}: {params: Promise<{id:stri
             };
           })
           .filter(Boolean);
+          const totalFromOrder = orderItems.reduce((sum: number, item: any) => sum+ item.price * item.quantity, 0);
 
         return (
           <div key={index} className="bg-blue-200 p-3">
@@ -46,6 +48,7 @@ export default async function PrevOrdersPAge({params}: {params: Promise<{id:stri
                 </div>
               );
             })}
+            <h2>Order total: {totalFromOrder}</h2>
             <AddOrderToCartButton items={orderItems} />
           </div>
         );

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 
 export default function currentOrder() {
+    // Success if the user was happy with the result and everything went through without error
     const router = useRouter();
     const {clearCart} = useCart();
 
@@ -22,7 +23,7 @@ export default function currentOrder() {
         <div className="p-2">
             <h1 className="font-bold">Successful order confirmation! 🎊</h1>
             <p className="pb-5">We will let you know when your bubbles are on their way!</p>
-            <button onClick={ConformationHome} className="bg-blue-400 p-2">Back to homepage</button>
+            <button onClick={ConformationHome} className="bg-blue-400 active:bg-blue-600 p-2">Back to homepage</button>
         </div>
     );
 }

@@ -1,5 +1,6 @@
 
 export interface BubbleInf {
+    // the bubble properties
     id: number;
     name: string;
     description: string;
@@ -8,6 +9,7 @@ export interface BubbleInf {
 }
 
 export interface BundlesInf {
+    // Bundle properties
     id: number;
     name: string;
     items: number[];

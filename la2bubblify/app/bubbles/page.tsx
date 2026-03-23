@@ -11,6 +11,7 @@ import AddToCartButton from "../_components/AddToCartButton";
 const URL = "http://localhost:3500";
 
 export default async function BubblesPage() {
+  // Showing all the bubbles available on the website, with a link and a button
   let bubbles: BubbleInf[] = [];
   
   try {
@@ -33,7 +34,7 @@ export default async function BubblesPage() {
               height={200}
             />
             <h2>{bubble.name}</h2>
-            <p className="pb-3">{bubble.price}</p>
+            <p className="pb-3">Price: {bubble.price} kr </p>
             </Link>
             <AddToCartButton item={{
                 id: bubble.id,

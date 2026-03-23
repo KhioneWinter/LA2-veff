@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function Header() {
-
+// Basic header idk, Also I used an emoji as the logo for my project, sue me
   return (
     <aside className="top-style">
       <nav className="nav-bar bg-blue-400 h-10 flex items-center gap-6">

@@ -7,6 +7,7 @@ import AddToCartButton from "../../_components/AddToCartButton";
 
 
 export default async function AboutBubble({params}: {params: Promise<{id: string}>}) {
+    // Shwing nececery information for a specific bubble
     const {id} = await params;
     const res = await fetch(`${URL}/api/bubbles/${id}`);
     
@@ -21,8 +22,8 @@ export default async function AboutBubble({params}: {params: Promise<{id: string
             <Image 
                 src={currBubble.image}
                 alt={currBubble.name}
-                width={200}
-                height={200}
+                width={400}
+                height={400}
                 className="bg-blue-50 rounded-xl"
             />
             <p className="font-bold pt-5">{currBubble.name}</p>

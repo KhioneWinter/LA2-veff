@@ -2,6 +2,7 @@
 const URL = "http://localhost:3500";
 
 export default async function AboutBubble() {
+  // Some company explenations
   return (
     <div className="p-2">
         <h1 className="font-bold">About us!</h1>

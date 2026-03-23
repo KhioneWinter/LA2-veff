@@ -5,6 +5,7 @@ import {useRouter} from "next/navigation";
 
 
 export default function deloveryPage() {
+    // Delivery method page just basic check
     const {updateCheckout} = useCheckout();
     const router = useRouter();
     
@@ -19,8 +20,8 @@ export default function deloveryPage() {
         <div className="p-2">
             <h1 className="font-bold pb-5">How would you like to recieve your order?</h1>
             <div className="flex gap-8">
-                <button onClick={() => handleChoice("delivery")} className="bg-blue-400 p-2">Delivery to house</button>
-                <button onClick={() => handleChoice("pickup")} className="bg-blue-400 p-2">Pickup at store</button>
+                <button onClick={() => handleChoice("delivery")} className="bg-blue-400 active:bg-blue-600 p-2">Delivery to house</button>
+                <button onClick={() => handleChoice("pickup")} className="bg-blue-400 active:bg-blue-600 p-2">Pickup at store</button>
             </div>
         </div>
     );

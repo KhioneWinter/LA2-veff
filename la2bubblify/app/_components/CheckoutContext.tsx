@@ -3,6 +3,7 @@
 import {useState, useEffect, createContext, useContext} from "react";
 
 export interface CheckoutInfo {
+    // checkout properites
     deliveryMethod: "delivery" | "pickup";
     name: string;
     phoneNum: string;
@@ -12,12 +13,14 @@ export interface CheckoutInfo {
 } 
 
 export interface CheckoutContextType {
+    // Context for the checkout like the update function
     checkout: CheckoutInfo;
     updateCheckout: (field: keyof CheckoutInfo, value: string) => void;
 
 }
 
 export function useCheckout() {
+    // same as the cart
     let value = useContext(CheckoutContext);
     if (!value) {
         throw new Error("Error came up with use of the useCheckout function");
@@ -28,6 +31,7 @@ export function useCheckout() {
 const CheckoutContext = createContext<CheckoutContextType | null>(null);
 
 export function CheckoutProvider({children}: {children: React.ReactNode}) {
+    // Provides the checkout properties and allows for easy set up 
     const [checkout, setCheckout] = useState<CheckoutInfo>({
         deliveryMethod: "delivery",
         name: "",
@@ -39,6 +43,7 @@ export function CheckoutProvider({children}: {children: React.ReactNode}) {
 
     
     function updateCheckout(field: keyof CheckoutInfo, value: string) {
+        // updates the values 
         setCheckout((prev) => ({...prev, [field]: value}));
     }
 

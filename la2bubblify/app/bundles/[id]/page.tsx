@@ -10,6 +10,7 @@ import Image from "next/image";
 import AddToCartButton from "../../_components/AddToCartButton";
 
 export default async function AboutBubble({params}: {params: Promise<{id: string}>}) {
+    // Showing nececery information for a specific bubble
     const {id} = await params;
     const res = await fetch(`${URL}/api/bundles/${id}`);
     

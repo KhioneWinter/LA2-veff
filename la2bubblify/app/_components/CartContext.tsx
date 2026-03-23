@@ -3,6 +3,7 @@
 import {useState, useEffect, createContext, useContext} from "react";
 
 export interface CartItem{
+    // cart properties
     id: number;
     name: string;
     price: number;
@@ -11,6 +12,8 @@ export interface CartItem{
 }
 
 export interface CartContextType {
+    // an array of all the cart items and then functions for how to handle-
+    // user input on the cart
     cart: CartItem[];
     addToCart: (item:CartItem) => void;
     removeFromCart: (id: number) => void;
@@ -20,6 +23,7 @@ export interface CartContextType {
 }
 
 export function useCart() {
+    // Using the cart
     let value = useContext(CartContext);
     if (!value) {
         throw new Error("Error came up with use of the useCart function");
@@ -30,6 +34,7 @@ export function useCart() {
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({children}: {children: React.ReactNode}) {
+    // provides all the neccecery functionality to the cart in the system
     const [cart, setCart] = useState<CartItem[]>([]);
 
     function addToCart(item: CartItem) {
@@ -51,15 +56,15 @@ export function CartProvider({children}: {children: React.ReactNode}) {
     }
 
     function addMultipleToCart(items: CartItem[]) {
-        items.forEach(item => addToCart(item));
+        items.forEach(item => addToCart(item)); // adds multiple items at a time, (only used for the past orders was simpler lol)
     }
 
     function clearCart() {
-        setCart([]);
+        setCart([]); // when the payment is done the cart is cleared 
     }
 
     useEffect (() =>{
-        const storedBubs = localStorage.getItem("cart");
+        const storedBubs = localStorage.getItem("cart"); 
         if (storedBubs) setCart(JSON.parse(storedBubs));
     }, []);
 
@@ -67,7 +72,7 @@ export function CartProvider({children}: {children: React.ReactNode}) {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
-    
+    // returns all the fucnitionality to the main html set up
     return (
         <CartContext.Provider value={{cart, addToCart, removeFromCart, updateQuantity, clearCart, addMultipleToCart}}>
             {children}
