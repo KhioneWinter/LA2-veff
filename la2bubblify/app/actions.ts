@@ -1,9 +1,10 @@
 'use server'
 
 export async function submitOrder(orderData: any, phonenumber: string) {
+  // Submits order to backend API, is then kept and can be used to check previous orders
   console.log("Calling URL:", `http://localhost:3500/api/orders/${phonenumber}`);
   console.log("Sending body:", JSON.stringify(orderData));
-  
+
   const res = await fetch(`http://localhost:3500/api/orders/${phonenumber}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
